@@ -71,7 +71,7 @@ These semi-supervised learning models are mainly used to predict hardness. The e
 - R² Score
 - Root Mean Squared Error (RMSE)
 
-The semi-supervised learning process is thoroughly detailed in the file ML_PROJECT_yuxian_ssl.ipynb. 
+The semi-supervised learning process is thoroughly detailed in the file ML_PROJECT_ssl.ipynb. 
 The file data_cleaning_for_ssl.ipynb is used to generate the cleaned database for semi-supervised learning.
 
 ## Conclusion
