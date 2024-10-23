@@ -69,3 +69,5 @@ This project demonstrates how machine learning models can be used to predict imp
 - Exploring advanced models like XGBoost or Neural Networks.
 
 ## References
+- [1]
+- [2]
