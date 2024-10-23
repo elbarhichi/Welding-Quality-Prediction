@@ -71,8 +71,10 @@ These semi-supervised learning models are mainly used to predict hardness. The e
 - R² Score
 - Root Mean Squared Error (RMSE)
 
-The semi-supervised learning process is thoroughly detailed in the file ML_PROJECT_ssl.ipynb. 
-The file data_cleaning_for_ssl.ipynb is used to generate the cleaned database for semi-supervised learning.
+The semi-supervised learning process is thoroughly detailed in the file `ML_PROJECT_ssl.ipynb`. 
+The file data_cleaning_for_ssl.ipynb is used to generate the cleaned database `welddb/welddb_ssl.csv` for semi-supervised learning.
+The final predictions of hardness have been saved in the file `welddb/hardness_predictions.csv`.
+
 
 ## Conclusion
 
