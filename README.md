@@ -69,6 +69,7 @@ These models are used to predict xxxxxxxxxxxxxxx. The evaluation metrics used in
 
 These semi-supervised learning models are mainly used to predict hardness. The evaluation metrics used include:
 - R² Score
+- Adjusted R² Score
 - Root Mean Squared Error (RMSE)
 
 The semi-supervised learning process is thoroughly detailed in the file `ML_PROJECT_ssl.ipynb`. 
