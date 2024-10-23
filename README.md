@@ -62,6 +62,18 @@ These models are used to predict xxxxxxxxxxxxxxx. The evaluation metrics used in
 - R² Score
 - Root Mean Squared Error (MSE)
 
+
+- The semi-supervised learning models employed include:
+    - self-trainig random forest
+    - self-trainig XGBoost
+
+These semi-supervised learning models are mainly used to predict hardness. The evaluation metrics used include:
+- R² Score
+- Root Mean Squared Error (RMSE)
+
+The semi-supervised learning process is thoroughly detailed in the file ML_PROJECT_yuxian_ssl.ipynb. 
+The file data_cleaning_for_ssl.ipynb is used to generate the cleaned database for semi-supervised learning.
+
 ## Conclusion
 
 This project demonstrates how machine learning models can be used to predict important weld properties based on chemical composition and welding parameters. The models can help optimize welding processes by revealing how various factors influence mechanical strength. Future improvements could focus on:
