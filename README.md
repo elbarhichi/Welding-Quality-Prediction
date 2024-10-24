@@ -66,4 +66,3 @@ This project demonstrated how machine learning models, including semi-supervised
 ## References
 1. Theo Boutin et al. “Classification des paramètres procédé de soudage par analyse expérimentale et apprentissage automatique,” 25e Congrès Français de Mécanique, 2022.
 2. T. Cool, H.K.D.H. Bhadeshia, and D.J.C. MacKay. “The yield and ultimate tensile strength of steel welds,” Materials Science and Engineering: A, 1997.
-
