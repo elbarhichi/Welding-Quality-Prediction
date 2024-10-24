@@ -13,7 +13,7 @@ A data-driven approach to predict the quality of steel welds by extracting, stan
 
 ## Project Overview
 
-This project focuses on predicting weld quality using machine learning models, with a particular emphasis on predicting **Hardness**, **Ultimate Tensile Strength**, **Yield Strength**, **Elongation**, **Reduction of Area** of steel welds. The dataset includes chemical compositions and mechanical properties of weld deposits. Different supervised and semi-supervised models are explored to enhance prediction accuracy.
+This project focuses on predicting weld quality using machine learning models, with a particular emphasis on predicting **Hardness**, **Ultimate Tensile Strength**, **Yield Strength**, **Elongation**, **Reduction of Area** and **Charpy Impact Toughness** of steel welds. The dataset includes chemical compositions and mechanical properties of weld deposits. Different supervised and semi-supervised models are explored to enhance prediction accuracy.
 
 
 ### Prerequisites
