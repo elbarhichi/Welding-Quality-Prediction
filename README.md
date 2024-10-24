@@ -1,13 +1,12 @@
-# ML_CS_Project:  Welding Quality Prediction
+# ML_CS_Project: Welding Quality Prediction
 
 A data-driven approach to predict the quality of steel welds by extracting, standardizing, and analyzing welding expertise, with potential applications across various industries.
 
 ## Table of Contents
 - [Project Overview](#project-overview)
-- [Preprocessing](#exploratory-data-analysis)
+- [Preprocessing](#preprocessing)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Evaluation Metrcis](#metrics)
-- [Machine Learning Models](#modeling)
+- [Modeling and Evaluation Metrics](#modeling-and-evaluation-metrics)
 - [Conclusion](#conclusion)
 - [References](#references)
 
@@ -29,60 +28,42 @@ pip install -r requirements.txt
 git clone git@gitlab-student.centralesupelec.fr:yousra.yakhou/ml_cs_project.git
 ```
 
-The dataset and detailed description are available here: ([WeldDB](https://www.phase-trans.msm.cam.ac.uk/map/data/materials/welddb-b.html)).
+The dataset and detailed description are available here: [WeldDB](https://www.phase-trans.msm.cam.ac.uk/map/data/materials/welddb-b.html).
 
 ## Preprocessing 
-The Preprocessing was conducted in the preprocessing.ipynb script and includes:
-- Addressing missing values and creating handling strategies.
-- Feature scaling and normalization.
-- Feature engineering and selection.
+The preprocessing steps were implemented in the `preprocessing.ipynb` script and include:
+- Handling missing values using iterative imputation.
+- Addressing non-numeric data, such as special characters and unit conversions.
+- Feature scaling and normalization, especially converting measurements from ppm to weight percentage.
+- Feature engineering, such as creating a Power column from Voltage and Current.
 
-## Exploratory Data Analysis 
-Exploratory Data Analysis (EDA) was conducted in the eda.ipynb script and includes:
-- Visualizing the distribution of different variables.
-- Investigating correlations between chemical composition and mechanical properties.
-- Basic statistical analysis, including mean, median, and standard deviation calculations for various features.
+## Exploratory Data Analysis
+Exploratory Data Analysis (EDA) was conducted in the `eda.ipynb` script and includes:
+- Generating correlation matrices to study relationships between mechanical and chemical properties.
+- Producing visualizations, such as heatmaps and histograms, to understand the distribution of key features.
 
-## Machine Learning Models
+## Modeling and Evaluation Metrics
 
-Machine learning models are implemented in the main.ipynb script.
-- The supervised learning models employed include:
-    -    SVR
-    -   Random Forest
+Machine learning models are implemented in the `main.ipynb` script.
 
-These models are used to predict the nine last columns (features).
-- R² Score
-- Root Mean Squared Error (MSE)
+### Supervised Learning Models:
+- **Principal Component Analysis (PCA)** followed by models such as:
+  - Linear Regression, Ridge Regression, Lasso Regression, ElasticNet, Decision Trees, Random Forest, Gradient Boosting, and Support Vector Regressor (SVR).
 
+PCA was used for dimensionality reduction and helped improve model performance for certain targets. XGBoost without PCA achieved the highest accuracy across many variables.
 
-- The supervised learning models employed include:
-    - XGboost
+### Semi-Supervised Learning Models:
+- **Self-Training** was applied using Random Forest and XGBoost to handle targets with limited labeled data, primarily predicting hardness.
 
-These models are used to predict xxxxxxxxxxxxxxx. The evaluation metrics used include:
-- R² Score
-- Root Mean Squared Error (MSE)
-
-
-- The semi-supervised learning models employed include:
-    - self-trainig random forest
-    - self-trainig XGBoost
-
-These semi-supervised learning models are mainly used to predict hardness. The evaluation metrics used include:
+### Evaluation Metrics:
 - R² Score
 - Adjusted R² Score
 - Root Mean Squared Error (RMSE)
 
-The semi-supervised learning process is thoroughly detailed in the file `ML_PROJECT_ssl.ipynb`. 
-The file `data_cleaning_for_ssl.ipynb` is used to generate the cleaned database `welddb/welddb_ssl.csv` for semi-supervised learning.
-The final predictions of hardness have been saved in the file `welddb/hardness_predictions.csv`.
-
-
 ## Conclusion
 
-This project demonstrates how machine learning models can be used to predict important weld properties based on chemical composition and welding parameters. The models can help optimize welding processes by revealing how various factors influence mechanical strength. Future improvements could focus on:
-- Fine-tuning hyperparameters.
-- Exploring advanced models like XGBoost or Neural Networks.
+This project demonstrated how machine learning models, including semi-supervised approaches, can predict key weld quality metrics like hardness and tensile strength. The XGBoost model, especially when applied without PCA, outperformed others. Future work could explore deep learning approaches and refine semi-supervised learning methods for further improvement.
 
 ## References
-- [1]
-- [2]
+1. Theo Boutin et al. “Classification des paramètres procédé de soudage par analyse expérimentale et apprentissage automatique,” 25e Congrès Français de Mécanique, 2022.
+2. T. Cool, H.K.D.H. Bhadeshia, and D.J.C. MacKay. “The yield and ultimate tensile strength of steel welds,” Materials Science and Engineering: A, 1997.
