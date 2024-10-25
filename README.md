@@ -1,7 +1,3 @@
-Here’s the updated `README.md` with the prerequisites and cloning instructions added:
-
----
-
 # Welding Quality Prediction Project
 
 ## Table of Contents
@@ -83,7 +79,7 @@ To assess model performance, we employed several metrics:
 
 ## Conclusion
 
-The project demonstrated that machine learning can effectively predict weld quality, enhancing reliability over traditional expert-driven methods. Supervised learning, particularly XGBoost without PCA, provided strong performance for most targets, while self-training approaches showed improvement for targets with high missing data. These findings support a scalable solution applicable to other industries requiring consistent quality assessments.
+The project demonstrated that machine learning can effectively predict weld quality, enhancing reliability over traditional expert-driven methods. Supervised learning, particularly using PCA with different models and XGBoost without PCA, provided strong performance for most targets, while self-training approaches showed improvement for targets with high missing data. These findings support a scalable solution applicable to other industries requiring consistent quality assessments.
 
 Future work may explore additional semi-supervised methods like label propagation or integrate domain-specific constraints for enhanced model interpretability and performance.
 
