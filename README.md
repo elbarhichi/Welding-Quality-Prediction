@@ -1,9 +1,12 @@
-# ML_CS_Project: Welding Quality Prediction
+Here’s the updated `README.md` with the prerequisites and cloning instructions added:
 
-A data-driven approach to predict the quality of steel welds by extracting, standardizing, and analyzing welding expertise, with potential applications across various industries.
+---
+
+# Welding Quality Prediction Project
 
 ## Table of Contents
 - [Project Overview](#project-overview)
+- [Prerequisites](#prerequisites)
 - [Preprocessing](#preprocessing)
 - [Exploratory Data Analysis](#exploratory-data-analysis)
 - [Modeling and Evaluation Metrics](#modeling-and-evaluation-metrics)
@@ -12,57 +15,82 @@ A data-driven approach to predict the quality of steel welds by extracting, stan
 
 ## Project Overview
 
-This project focuses on predicting weld quality using machine learning models, emphasizing **Hardness**, **Ultimate Tensile Strength**, **Yield Strength**, **Elongation**, and **Reduction of Area** of steel welds. The dataset includes chemical compositions and mechanical properties of weld deposits. The project explored both supervised and semi-supervised learning approaches, using Principal Component Analysis (PCA) for dimensionality reduction and models such as XGBoost and Random Forest. Semi-supervised learning methods, like self-training, were applied to improve predictions for targets with high missing values.
+This project leverages machine learning techniques to enhance the assessment of welding quality by predicting key mechanical properties. Our approach addresses the limitations of traditional methods reliant on expert judgment, which can be inconsistent and subjective. Using both supervised and semi-supervised learning, we focused on critical variables influencing weld quality, with applications in industries like wind turbine manufacturing where welding quality impacts safety and performance. 
 
-### Prerequisites
-Make sure Python 3.10+ is installed.
+Our study aims to create a data-driven model that ensures consistent and reliable weld assessments, helping to optimize industrial processes by minimizing dependency on expert knowledge.
 
+## Prerequisites
+
+Ensure that Python 3.10+ is installed on your system.
+
+To install the necessary dependencies, run:
 ```bash
 pip install -r requirements.txt
 ```
 
 ### Cloning the Repository
 
+Clone the repository using the command below:
 ```bash
 git clone git@gitlab-student.centralesupelec.fr:yousra.yakhou/ml_cs_project.git
 ```
 
-The dataset and detailed description are available here: [WeldDB](https://www.phase-trans.msm.cam.ac.uk/map/data/materials/welddb-b.html).
+The dataset and additional details can be found at [WeldDB](https://www.phase-trans.msm.cam.ac.uk/map/data/materials/welddb-b.html).
 
-## Preprocessing 
-The preprocessing steps were implemented in the `preprocessing.ipynb` script and include:
-- Handling missing values using iterative imputation.
-- Addressing non-numeric data, such as special characters and unit conversions.
-- Feature scaling and normalization, especially converting measurements from ppm to weight percentage.
-- Feature engineering, such as creating a Power column from Voltage and Current.
+## Preprocessing
+
+The dataset, containing 1652 rows and 44 columns, was prepared through rigorous preprocessing steps, which included:
+
+- **Handling Missing Values**: Non-numeric data entries and missing values were identified and managed. Missing values were replaced using iterative imputation to maintain data integrity.
+- **Data Cleaning and Standardization**:
+  - **Special Characters**: Non-standard characters were removed or converted to maintain uniformity.
+  - **Unit Conversion**: Values with units embedded in text were extracted and standardized.
+- **Feature Engineering**:
+  - Created a new `Power` column as the product of Voltage and Current, capturing the interaction between these variables.
+  - Categorical variables were encoded, and ranges were averaged to provide consistent numeric values.
+- **Scaling and Normalization**: To ensure comparability, variables with differing units or magnitudes were normalized. For example, elemental concentrations were converted from ppm to weight percentages (%).
+
+This preprocessing step provided a clean, consistent dataset, enabling more effective model training.
 
 ## Exploratory Data Analysis
-Exploratory Data Analysis (EDA) was conducted in the `eda.ipynb` script and includes:
-- Generating correlation matrices to study relationships between mechanical and chemical properties.
-- Producing visualizations, such as heatmaps and histograms, to understand the distribution of key features.
+
+EDA provided insights into data distribution and feature relationships, crucial for understanding the underlying patterns in the dataset. Key analyses included:
+
+- **Correlation Analysis**: A heatmap highlighted relationships between mechanical properties and chemical compositions. For example, yield strength was positively correlated with ultimate tensile strength.
+- **Data Visualizations**:
+  - **Heatmap**: Displayed correlations to help identify redundant or highly related variables.
+  - **Histograms**: Illustrated distributions of key mechanical properties like yield strength and elongation, showing variability within the dataset.
+
+EDA guided feature selection, informed model choices, and highlighted essential data trends.
 
 ## Modeling and Evaluation Metrics
 
-Machine learning models are implemented in the `main.ipynb` script.
+The modeling process utilized both supervised and semi-supervised learning techniques to predict weld quality effectively:
 
-### Supervised Learning Models:
-- **Principal Component Analysis (PCA)** followed by models such as:
-  - Linear Regression, Ridge Regression, Lasso Regression, ElasticNet, Decision Trees, Random Forest, Gradient Boosting, and Support Vector Regressor (SVR).
+- **Supervised Learning**:
+  - **PCA (Principal Component Analysis)**: Reduced dimensionality, retaining the most significant features for models, including Gradient Boosting and Random Forest.
+  - **XGBoost (Without PCA)**: Directly utilized all features, providing better predictive accuracy than PCA-based models for some targets.
+- **Semi-Supervised Learning**: For targets with substantial missing data (e.g., hardness with 91.6% missing), we used self-training with XGBoost and Random Forest, iteratively labeling missing data for improved predictions.
 
-PCA was used for dimensionality reduction and helped improve model performance for certain targets. XGBoost without PCA achieved the highest accuracy across many variables.
+### Evaluation Metrics
 
-### Semi-Supervised Learning Models:
-- **Self-Training** was applied using Random Forest and XGBoost to handle targets with limited labeled data, primarily predicting hardness.
+To assess model performance, we employed several metrics:
 
-### Evaluation Metrics:
-- R² Score
-- Adjusted R² Score
-- Root Mean Squared Error (RMSE)
+- **Mean Squared Error (MSE)** and **Root Mean Squared Error (RMSE)**: Captured average prediction errors, with RMSE in the target variable’s unit.
+- **Mean Absolute Error (MAE)**: Quantified average absolute errors, less influenced by outliers than MSE.
+- **R-Squared (R²) and Adjusted R²**: Evaluated model fit, with values closer to 1 indicating better predictions.
+- **Cross-Validation (CV)**: Ensured model robustness and generalization across multiple data splits.
 
 ## Conclusion
 
-This project demonstrated how machine learning models, including semi-supervised approaches, can predict key weld quality metrics like hardness and tensile strength. The XGBoost model, especially when applied without PCA, outperformed others. Future work could explore deep learning approaches and refine semi-supervised learning methods for further improvement.
+The project demonstrated that machine learning can effectively predict weld quality, enhancing reliability over traditional expert-driven methods. Supervised learning, particularly XGBoost without PCA, provided strong performance for most targets, while self-training approaches showed improvement for targets with high missing data. These findings support a scalable solution applicable to other industries requiring consistent quality assessments.
+
+Future work may explore additional semi-supervised methods like label propagation or integrate domain-specific constraints for enhanced model interpretability and performance.
 
 ## References
-1. Theo Boutin et al. “Classification des paramètres procédé de soudage par analyse expérimentale et apprentissage automatique,” 25e Congrès Français de Mécanique, 2022.
-2. T. Cool, H.K.D.H. Bhadeshia, and D.J.C. MacKay. “The yield and ultimate tensile strength of steel welds,” Materials Science and Engineering: A, 1997.
+
+1. Theo Boutin et al. "Classification des paramètres procédés de soudage par analyse expérimentale et apprentissage automatique." *25e Congrès Français de Mécanique*, 2022.
+2. Olivier Chapelle, Bernhard Schölkopf, and Alexander Zien. *Semi-supervised learning*. MIT Press, 2006.
+3. T. Cool, H.K.D.H. Bhadeshia, and D.J.C. MacKay. "The yield and ultimate tensile strength of steel welds." *Materials Science and Engineering: A*, 1997.
+4. Aurélien Géron. *Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow*. O'Reilly Media, 2019.
+5. ISO 15614-1:2017. *Specification and qualification of welding procedures for metallic materials*.
