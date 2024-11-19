@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 Clone the repository using the command below:
 ```bash
-git clone git@gitlab-student.centralesupelec.fr:yousra.yakhou/ml_cs_project.git
+git clone git@github.com:elbarhichi/Welding-Quality-Prediction.git
 ```
 
 The dataset and additional details can be found at [WeldDB](https://www.phase-trans.msm.cam.ac.uk/map/data/materials/welddb-b.html).
